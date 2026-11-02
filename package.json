@@ -1,0 +1,48 @@
+{
+  "name": "opencode-go-gauge",
+  "version": "0.1.0",
+  "description": "侧边栏显示 OpenCode Go 套餐用量：5 小时 / 每周 / 每月三个窗口，以及每个模型在当前窗口的配额消耗。",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whoisay/opencode-go-gauge.git"
+  },
+  "keywords": ["opencode", "opencode-plugin", "tui", "usage", "quota"],
+  "engines": {
+    "opencode": ">=2.0.2"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./tui": "./dist/tui.js"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "babel src --out-dir dist --extensions .ts,.tsx",
+    "prepublishOnly": "npm run build",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test \"test/*.test.mjs\"",
+    "verify": "tsc --noEmit && babel src --out-dir dist --extensions .ts,.tsx && node --test \"test/*.test.mjs\"",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "@opencode/client": "2.2.5",
+    "@opencode/plugin": "2.2.5"
+  },
+  "peerDependencies": {
+    "@opentui/core": ">=0.8.0",
+    "@opentui/solid": ">=0.8.0",
+    "solid-js": ">=1.9.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.29.7",
+    "@babel/core": "^7.29.7",
+    "@babel/preset-typescript": "^7.27.1",
+    "@opentui/core": "0.8.1",
+    "@opentui/solid": "0.8.1",
+    "@types/node": "^26.0.1",
+    "babel-preset-solid": "1.9.12",
+    "solid-js": "1.9.12",
+    "typescript": "^6.0.3"
+  }
+}
